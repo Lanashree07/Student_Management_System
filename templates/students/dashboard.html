@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | EduManage{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="dashboard-stats">
+    <div class="glass-card">
+        <div style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Total Students</div>
+        <div class="stat-value">{{ total_students }}</div>
+    </div>
+    <div class="glass-card">
+        <div style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Total Courses</div>
+        <div class="stat-value" style="color: var(--secondary);">{{ total_courses }}</div>
+    </div>
+</div>
+
+<div class="glass-card" style="margin-top: 2rem;">
+    <h2 style="margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 500;">Recently Enrolled Students</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Major</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in recent_students %}
+                <tr>
+                    <td style="font-weight: 500;">{{ student.first_name }} {{ student.last_name }}</td>
+                    <td style="color: var(--text-muted);">{{ student.email }}</td>
+                    <td><span style="background: rgba(99, 102, 241, 0.2); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">{{ student.major }}</span></td>
+                    <td style="color: var(--text-muted); font-size: 0.9rem;">{{ student.enrollment_date|date:"M d, Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">No students found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

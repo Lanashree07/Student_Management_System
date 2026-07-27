@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Courses | EduManage{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>Courses</h1>
+    <a href="{% url 'course_create' %}" class="btn btn-primary">+ Add Course</a>
+</div>
+
+<div class="glass-card">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Credits</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td style="font-weight: 500; color: var(--primary);">{{ course.code }}</td>
+                    <td style="font-weight: 500;">{{ course.name }}</td>
+                    <td style="color: var(--text-muted);">{{ course.credits }}</td>
+                    <td>
+                        <div class="actions">
+                            <a href="{% url 'course_update' course.pk %}" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Edit</a>
+                            <a href="{% url 'course_delete' course.pk %}" class="btn btn-danger" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">No courses found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
