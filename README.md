@@ -41,6 +41,29 @@ Student_Management_System/
 
 ---
 
+## 📸 Project Screenshots
+
+### 🏠 Dashboard
+
+![Dashboard](templates/Screenshots/dashboard.png)
+
+### 👨‍🎓 Student Management
+
+![Student Management](templates/Screenshots/student.png)
+
+### ➕ Add Student
+
+![Add Student](templates/Screenshots/add_student.png)
+
+### 📚 Course Management
+
+![Course Management](templates/Screenshots/courses.png)
+
+### ➕ Add Course
+
+![Add Course](templates/Screenshots/add_course.png)
+
+
 ## ⚙️ Installation
 
 1. Clone the repository
